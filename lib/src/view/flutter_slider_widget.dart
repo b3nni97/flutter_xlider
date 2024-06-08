@@ -2262,16 +2262,22 @@ class _FlutterSliderState extends State<FlutterSlider>
     if (_containerLeft <= 0 ||
         (MediaQuery.of(context).size.width - _constraintMaxWidth) <=
             _containerLeft) {
-      RenderBox containerRenderBox =
-          containerKey.currentContext!.findRenderObject() as RenderBox;
-      _containerLeft = containerRenderBox.localToGlobal(Offset.zero).dx;
+      RenderBox? containerRenderBox =
+          containerKey.currentContext?.findRenderObject() as RenderBox?;
+
+      if (containerRenderBox != null) {
+        _containerLeft = containerRenderBox.localToGlobal(Offset.zero).dx;
+      }
     }
     if (_containerTop <= 0 ||
         (MediaQuery.of(context).size.height - _constraintMaxHeight) <=
             _containerTop) {
-      RenderBox containerRenderBox =
-          containerKey.currentContext!.findRenderObject() as RenderBox;
-      _containerTop = containerRenderBox.localToGlobal(Offset.zero).dy;
+      RenderBox? containerRenderBox =
+          containerKey.currentContext?.findRenderObject() as RenderBox?;
+
+      if (containerRenderBox != null) {
+        _containerTop = containerRenderBox.localToGlobal(Offset.zero).dy;
+      }
     }
   }
 }
